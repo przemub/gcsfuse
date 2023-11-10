@@ -127,6 +127,11 @@ func buildBinaries(dstDir, srcDir, version string, buildArgs []string) (err erro
 		},
 	}
 
+	arch := os.Getenv("GOARCH")
+	if arch == "" {
+		arch = runtime.GOARCH
+	}
+
 	for _, bin := range binaries {
 		log.Printf("Building %s to %s", bin.goTarget, bin.outputPath)
 
