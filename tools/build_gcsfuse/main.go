@@ -127,9 +127,9 @@ func buildBinaries(dstDir, srcDir, version string, buildArgs []string) (err erro
 		},
 	}
 
-	arch := os.Getenv("GOARCH")
-	if arch == "" {
-		arch = runtime.GOARCH
+	goarch := os.Getenv("GOARCH")
+	if goarch == "" {
+		goarch = runtime.GOARCH
 	}
 
 	for _, bin := range binaries {
@@ -159,6 +159,7 @@ func buildBinaries(dstDir, srcDir, version string, buildArgs []string) (err erro
 		cmd.Env = []string{
 			"GO15VENDOREXPERIMENT=1",
 			"GO111MODULE=auto",
+			fmt.Sprintf("GOARCH=%s", arch),
 			fmt.Sprintf("PATH=%s", pathEnv),
 			fmt.Sprintf("GOROOT=%s", runtime.GOROOT()),
 			fmt.Sprintf("GOPATH=%s", gopath),
