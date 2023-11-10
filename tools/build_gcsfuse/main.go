@@ -159,7 +159,7 @@ func buildBinaries(dstDir, srcDir, version string, buildArgs []string) (err erro
 		cmd.Env = []string{
 			"GO15VENDOREXPERIMENT=1",
 			"GO111MODULE=auto",
-			fmt.Sprintf("GOARCH=%s", arch),
+			fmt.Sprintf("GOARCH=%s", goarch),
 			fmt.Sprintf("PATH=%s", pathEnv),
 			fmt.Sprintf("GOROOT=%s", runtime.GOROOT()),
 			fmt.Sprintf("GOPATH=%s", gopath),
